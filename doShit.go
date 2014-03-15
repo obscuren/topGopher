@@ -4,14 +4,27 @@ import (
 	"bufio"
 	"os"
 	"os/exec"
+	"strconv"
 	"time"
 )
 
 func main() {
-	//2 commits per minute
+	//defaults to 12 commits a day
+	commitsPerDay := 12
+
+	//if we pass in some arg, we parse that
+	if len(os.Args) > 1 {
+		if "" != os.Args[1] {
+			commitsPerDay, _ = strconv.Atoi(os.Args[1])
+			if commitsPerDay > 24 {
+				commitsPerDay = 24
+			}
+		}
+	}
+
 	for {
 		loopThatShit()
-		time.Sleep(10 * time.Second)
+		time.Sleep(time.Duration(12/(commitsPerDay/2)) * time.Hour)
 	}
 }
 
