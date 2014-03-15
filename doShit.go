@@ -24,7 +24,7 @@ func main() {
 
 	for {
 		loopThatShit()
-		time.Sleep(time.Duration(12/(commitsPerDay/2)) * time.Hour)
+		time.Sleep(time.Duration(24/(commitsPerDay/2)) * time.Hour)
 	}
 }
 
