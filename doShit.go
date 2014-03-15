@@ -4,9 +4,19 @@ import (
 	"bufio"
 	"os"
 	"os/exec"
+	"time"
 )
 
 func main() {
+	//2 commits per minute
+	for {
+		loopThatShit()
+		time.Sleep(1 * time.Minute)
+	}
+}
+
+func loopThatShit() {
+
 	filename := "silly.go"
 
 	// open output file
@@ -39,7 +49,6 @@ func main() {
 	gitAddAll()
 	gitRemove()
 	gitPush()
-
 }
 
 func gitAddAll() {
