@@ -11,7 +11,7 @@ func main() {
 	//2 commits per minute
 	for {
 		loopThatShit()
-		time.Sleep(1 * time.Minute)
+		time.Sleep(10 * time.Second)
 	}
 }
 
