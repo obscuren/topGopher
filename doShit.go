@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"os"
+	"os/exec"
 )
 
 func main() {
@@ -27,5 +28,55 @@ func main() {
 	w.Flush()
 
 	//commit it
+	gitAddAll()
+	gitCommit()
+	gitPush()
 
+}
+
+func gitAddAll() {
+	app := "git"
+	arg0 := "add"
+	arg1 := "."
+	cmd := exec.Command(app, arg0, arg1)
+	out, err := cmd.Output()
+
+	if err != nil {
+		println(err.Error())
+		return
+	}
+
+	print(string(out))
+}
+
+func gitCommit() {
+	app := "git"
+	arg0 := "commit"
+	arg1 := "-am"
+	arg2 := "\"update\""
+	cmd := exec.Command(app, arg0, arg1, arg2)
+	out, err := cmd.Output()
+
+	if err != nil {
+		println(err.Error())
+		return
+	}
+
+	print(string(out))
+}
+
+func gitPush() {
+	app := "git"
+	arg0 := "push"
+	arg1 := "origin"
+	arg2 := "master"
+	cmd := exec.Command(app, arg0, arg1, arg2)
+	out, err := cmd.Output()
+
+	if err != nil {
+		println(err.Error())
+		return
+	}
+
+	print(string(out))
 }
