@@ -37,7 +37,7 @@ func main() {
 
 	//commit it
 	gitAddAll()
-	gitCommit()
+	gitRemove()
 	gitPush()
 
 }
@@ -62,6 +62,22 @@ func gitCommit() {
 	arg0 := "commit"
 	arg1 := "-am"
 	arg2 := "\"update\""
+	cmd := exec.Command(app, arg0, arg1, arg2)
+	out, err := cmd.Output()
+
+	if err != nil {
+		println(err.Error())
+		return
+	}
+
+	print(string(out))
+}
+
+func gitRemove() {
+	app := "git"
+	arg0 := "commit"
+	arg1 := "-am"
+	arg2 := "\"remove\""
 	cmd := exec.Command(app, arg0, arg1, arg2)
 	out, err := cmd.Output()
 
