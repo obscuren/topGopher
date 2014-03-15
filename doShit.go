@@ -32,6 +32,14 @@ func main() {
 	gitCommit()
 	gitPush()
 
+	//delete it
+	os.Remove(filename)
+
+	//commit it
+	gitAddAll()
+	gitCommit()
+	gitPush()
+
 }
 
 func gitAddAll() {
